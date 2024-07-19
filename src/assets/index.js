@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import sophialogo from "./sophialogo.svg";
-import favicon from "./favicon.png";
+import favicon from "./favicon.ico";
 import backend from "./backend.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
