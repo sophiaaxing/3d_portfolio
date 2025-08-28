@@ -43,16 +43,22 @@ const About = () => {
       </motion.div>
       
       <motion.p variants={fadeIn("", "", 0.1, 1)} className="mt-4 text-secondary text-[17px] max-w-4xl leading-[30px]">
-        Hello! My name is Sophia Xing. I am a student at Rice University, studying Computer Science, Mathematics and Business.
-        I began university without much certainty on what I truly wanted to pursue as a career, but have found a love for the field
-        of computer science. I find the way it intersects with all other fields inspiring and the best way to make a difference. 
+        I am a student at Rice University studying Computer Science, Mathematics, and Business. 
+        When I first started college, I was uncertain about where I wanted to focus, but I quickly found myself drawn to computer science. 
+        I enjoy the way it combines creativity with problem-solving and connects across so many different fields. 
+        For me, coding is not just about writing programs but about building systems, uncovering patterns, and finding elegant solutions to complex problems.
       </motion.p>
       <motion.p variants={fadeIn("", "", 0.3, 1)} className="mt-4 text-secondary text-[17px] max-w-5xl leading-[30px]">
-        I like to challenge myself. My other interests all stem from this notion. I play tennis because it is a constant battle against
-        both myself and my opponent. I make music because not only do I love singing and playing instruments, 
-        this is one of the most competitive industries and I challenge myself to try and succeed in spite of that. 
-        Additionally, I challenge myself gastronomically by creating my own recipes and attempting to cook dishes I have never even heard of before. 
-        Always striving to push past boundaries has made me who I am today and who I will continue to be.
+        Outside of academics, I look for challenges that push me to grow. 
+        Tennis teaches me discipline and strategy under pressure. 
+        Music allows me to balance creativity with persistence. 
+        Cooking gives me space to experiment and learn by trial and error. 
+        In each of these, I enjoy pushing boundaries and seeing what I can create when I take on something unfamiliar.
+      </motion.p>
+      <motion.p variants={fadeIn("", "", 0.5, 1)} className="mt-4 text-secondary text-[17px] max-w-5xl leading-[30px]">
+        That same mindset shapes how I approach my work. 
+        I thrive when I am challenged to think critically, learn quickly, and adapt to new situations. 
+        It is why I am drawn to careers in software engineering and quantitative analysis, where curiosity and rigor come together to solve meaningful problems and create lasting impact.
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">

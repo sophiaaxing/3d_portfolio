@@ -22,10 +22,12 @@ import {
     tesla,
     shopify,
     episodesix,
+    aws,
     ruif,
     d2k,
     csa,
     csters,
+    csclub,
     carrent,
     jobit,
     tripguide,
@@ -49,19 +51,19 @@ import {
   
   const services = [
     {
-      title: "UI/UX Developer",
+      title: "Backend Engineer",
       icon: web,
     },
     {
-      title: "Backend Developer",
+      title: "Full-Stack Developer",
       icon: backend,
     },
     {
-      title: "Database Engineer",
+      title: "Systems Programmer",
       icon: mobile,
     },
     {
-      title: "iOS Developer",
+      title: "AI & Data Engineer",
       icon: creator,
     },
   ];
@@ -131,26 +133,38 @@ import {
   
   const experiences = [
     {
+      title: "Software Development Engineer Intern",
+      company_name: "Amazon Web Services",
+      icon: aws,
+      iconBg: "#ffffff",
+      date: "May 2025 - August 2025",
+      points: [
+        "Designed a Kubernetes and CloudFormation aware console to improve Elastic Load Balancer usability for AWS customers.",
+        "Built tag-based detection and mapping to surface Kubernetes relationships across ELB resources.",
+        "Introduced proactive drift detection to prevent misconfigurations and boost system reliability."
+      ],
+    },
+    {
       title: "Software Engineer Intern",
       company_name: "Episode Six",
       icon: episodesix,
       iconBg: "#383E56",
-      date: "June 2024 - Present",
+      date: "June 2024 - August 2024",
       points: [
-        "Implemented feature and bug fix tickets for frontend and backend, using Java, React, Javascript, Typescript, Cassandra and SQL.",
-        "Gained hands-on experience working with API calls, database queries, and authentication to protect sensitive data.",
-        "Utilized Agile to manage project timelines, collaborating with cross-functional teams including designers, quality assurance, and software delivery engineer testers in code reviews, providing and receiving constructive feedback to ensure code quality and maintainability."
+        "Built backend APIs that streamlined authentication and transaction workflows for enterprise fintech clients.",
+        "Improved transaction validation and error handling to boost accuracy and security.",
+        "UEnhanced reliability with structured logging and expanded test coverage, cutting debugging time significantly."
       ],
     },
     {
-      title: "Junior Financial Analyst",
+      title: "Senior Analyst",
       company_name: "Rice Undergraduate Investment Fund",
       icon: ruif,
       iconBg: "#ffffff",
       date: "May 2024 - Present",
       points: [
-        "Accepted as junior analyst for a successful stock pitch and technical interview for the RUIF Executive Board.",
-        "Gained experience in both the quantitative and qualitative aspects of building an investment thesis, financial accounting and analysis, and portfolio theory.",
+        "Delivered 5% return on a $40,000 energy portfolio by identifying undervalued equities and leading investment decisions.",
+        "Developed and defended trade theses by integrating macro factors and performing risk-reward scenario analysis.",
       ],
     },
     {
@@ -158,7 +172,7 @@ import {
       company_name: "Rice Data To Knowledge Lab",
       icon: d2k,
       iconBg: "#ffffff",
-      date: "March 2024 - Present",
+      date: "March 2024 - March 2025",
       points: [
         "Directing the 7th Annual Rice University Datathon, a city-wide data science competition welcoming 500+ students in previous years.",
         "Designing competition tracks, hosting workshops, coordinating schedules, budgeting, and securing sponsorships up to $30,000 in previous years.",
@@ -176,9 +190,9 @@ import {
       ],
     },
     {
-      title: "Event Chair",
+      title: "External Vice President",
       company_name: "Rice Computer Science Club",
-      icon: csters,
+      icon: csclub,
       iconBg: "#ffffff",
       date: "September 2023 - Present",
       points: [

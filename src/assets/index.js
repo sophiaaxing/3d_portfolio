@@ -30,10 +30,12 @@ import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 import episodesix from "./company/e6.webp";
+import aws from "./company/aws.png";
 import ruif from "./company/ruif.jpeg";
 import d2k from "./company/d2k.jpeg";
 import csa from "./company/csa.jpeg";
 import csters from "./company/csterslogo.png";
+import csclub from "./company/csclub.png";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
@@ -70,10 +72,12 @@ export {
   starbucks,
   tesla,
   episodesix,
+  aws,
   ruif,
   d2k,
   csa,
   csters,
+  csclub,
   carrent,
   jobit,
   tripguide,
