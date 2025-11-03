@@ -17,8 +17,9 @@ const Contact = () => {
     name: '',
     email: '',
     message: ''
-  })
+  });
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +30,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMessage('');
 
     emailjs.send(
       "service_80th60m",
@@ -50,13 +52,15 @@ const Contact = () => {
         name: '',
         email: '',
         message: ''
-      })
+      });
+      setErrorMessage('');
     }, (error) => {
       setLoading(false)
 
       console.log(error);
 
-      alert("Something went wrong.")
+      alert("Something went wrong. You can email me directly at sx25@rice.edu.");
+      setErrorMessage('If the form is not working, you can reach me directly at ');
     })
   };
 
@@ -125,6 +129,15 @@ const Contact = () => {
           >
             {loading ? 'Sending...' : 'Send'}
           </button>
+
+          {errorMessage && (
+            <p className="text-sm text-red-400">
+              {errorMessage}
+              <a href="mailto:sx25@rice.edu" className="text-white underline ml-1">
+                sx25@rice.edu
+              </a>
+            </p>
+          )}
 
         </form>
       </motion.div>
