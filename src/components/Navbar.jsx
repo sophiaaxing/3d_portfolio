@@ -1,80 +1,67 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import { styles } from '../styles';
 import { navLinks } from '../constants';
-import { favicon, menu, close } from '../assets';
 
 const Navbar = () => {
-  const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
+  const [active, setActive] = useState('');
+  const [open, setOpen] = useState(false);
+  const navRef = useRef(null);
+  const toggleRef = useRef(null);
 
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (event) => {
+      if (!navRef.current?.contains(event.target)) setOpen(false);
+    };
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [open]);
+
+  const links = (mobile = false) => navLinks.map((link) => (
+    <li key={link.id}>
+      <a
+        href={`#${link.id}`}
+        aria-current={active === link.id ? 'location' : undefined}
+        onClick={() => { setActive(link.id); setOpen(false); }}
+        className={`${mobile ? 'block px-5 py-3' : 'px-5 py-2'} rounded-full text-sm font-medium transition-colors ${active === link.id ? 'bg-[#f5dce4] text-accent' : 'text-secondary hover:bg-[#f9e8ed] hover:text-accent'}`}
+      >
+        {link.title}
+      </a>
+    </li>
+  ));
 
   return (
-    <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}>
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        <Link 
-          to="/"
-          className="flex items-center gap-2"
-          onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
-          }}>
-            <img src={favicon} alt = "favicon"
-            className="w-9 h-9 object-contain rounded-full" />
-            <p className="test-white test-[18px] font-bold cursor-pointer flex">
-              Sophia Xing &nbsp;
-              <span className="sm:block hidden">| &nbsp; Portfolio</span>
-            </p>
+    <nav ref={navRef} aria-label="Main navigation" className={`${styles.paddingX} fixed top-0 z-20 w-full bg-[#fff8f5]/95 backdrop-blur-md border-b border-[#edd3dc]`}>
+      <div className="relative max-w-7xl mx-auto flex min-h-[84px] items-center justify-between gap-4">
+        <Link to="/" aria-label="Sophia Xing home" className="flex items-center gap-3 rounded-lg" onClick={() => { setActive(''); setOpen(false); window.scrollTo(0, 0); }}>
+          <span className="sx-monogram" aria-hidden="true">
+            <img src="/images/sxlogo.png" alt="" />
+          </span>
+          <span className="editorial-title text-2xl italic text-ink">Sophia Xing</span>
         </Link>
-        <ul className="list-none hidden sm:flex flex-row gap-10">
-          {navLinks.map((link) => (
-            <li
-              key={link.id}
-              className={`${
-                active === link.title
-                  ? "text-white"
-                  : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}  
-              onClick={() => setActive(link.title)}
-            >
-              <a href={`#${link.id}`}>{link.title}</a>
-            </li>
-          ))}
+        <ul className="hidden sm:flex items-center gap-1 rounded-full border border-accent/15 bg-white/60 p-1.5">
+          {links()}
         </ul>
-        <div className="sm:hidden flex flex-1 justify-end items-center">
-          <img
-          src={toggle ? close : menu}
-          alt="menu"
-          className="w-[28px] h-[28px] object-contain cursor-pointer" 
-          onClick={() => setToggle(!toggle)}
-          />
-
-          <div className={`${!toggle ? 'hidden' :  'flex' } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
-            <ul className="list-none flex justify-end items-start flex-col gap-4">
-              {navLinks.map((link) => (
-                <li
-                  key={link.id}
-                  className={`${
-                    active === link.title
-                      ? "text-white"
-                      : "text-secondary"
-                  } font-poppins font-medium cursor-pointer text-[16px]`}  
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(link.title);
-                  }}
-                >
-                  <a href={`#${link.id}`}>{link.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
+        <button ref={toggleRef} type="button" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)} className="sm:hidden rounded-full border border-accent/25 bg-[#fcebee] px-4 py-2.5 text-sm font-medium text-accent">
+          {open ? 'Close ×' : 'Menu +'}
+        </button>
+        <div id="mobile-navigation" hidden={!open} className="sm:hidden absolute top-full mt-3 right-0 w-56 rounded-2xl border border-accent/20 bg-[#fff8f5] p-2 shadow-[0_12px_30px_#66354d18]">
+          <ul className="space-y-1">{links(true)}</ul>
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

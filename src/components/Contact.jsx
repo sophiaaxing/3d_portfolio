@@ -1,155 +1,82 @@
-import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-
-import { styles } from '../styles';
-import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
-import { slideIn } from '../utils/motion';
 
-// RTcDqeFm_c1YuASBq
-// template_kuxbstt
-// service_80th60m
-
+const emptyForm = { name: '', email: '', message: '' };
 const Contact = () => {
-  const formRef = useRef();
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setForm({ ...form, [name]: value});
+  const [form, setForm] = useState(emptyForm);
+  const [status, setStatus] = useState('idle');
+  const sending = useRef(false);
+  const handleChange = ({ target }) => {
+    setForm((previous) => ({ ...previous, [target.name]: target.value }));
+    if (status !== 'sending') setStatus('idle');
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setErrorMessage('');
-
-    emailjs.send(
-      "service_80th60m",
-      "template_kuxbstt",
-      {
-        from_name: form.name,
-        to_name: "Sophia Xing",
-        from_email: form.email,
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (sending.current) return;
+    if (!form.name.trim() || !form.message.trim()) {
+      setStatus('invalid');
+      return;
+    }
+    sending.current = true;
+    setStatus('sending');
+    try {
+      await emailjs.send('service_80th60m', 'template_kuxbstt', {
+        from_name: form.name.trim(),
+        to_name: 'Sophia Xing',
+        from_email: form.email.trim(),
+        reply_to: form.email.trim(),
         to_email: 'sophiaxing2005@gmail.com',
-        message: form.message
-      },
-      "RTcDqeFm_c1YuASBq"
-    )
-    .then(() => {
-      setLoading(false);
-      alert('Thank you. I will get back to you as soon as possible.')
-
-      setForm({
-        name: '',
-        email: '',
-        message: ''
-      });
-      setErrorMessage('');
-    }, (error) => {
-      setLoading(false)
-
-      console.log(error);
-
-      alert("Something went wrong. You can email me directly at sx25@rice.edu.");
-      setErrorMessage('If the form is not working, you can reach me directly at ');
-    })
+        message: form.message.trim(),
+      }, 'RTcDqeFm_c1YuASBq');
+      setForm(emptyForm);
+      setStatus('success');
+    } catch {
+      setStatus('error');
+    } finally {
+      sending.current = false;
+    }
   };
 
   return (
-    <div className="xl:mt-12 xl:flew-row flex-col-reverse flex gap-10 overflow-hidden">
-      <motion.div
-        variants={slideIn('left', "tween", 0.2, 1)}
-        className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
-      >
-        <p className={styles.sectionSubText}>
-          Get in touch
-        </p>
-        <h3 className={styles.sectionHeadText}>
-          Contact
-        </h3>
-        <form 
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className="mt-12 flex flex-col gap-8"
-        >
-          <label className="flex flex-col">
-            <span className="tex-white font-medium mb-4">
-              Your Name
-            </span>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="What is your name?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none"
-            />
+    <div className="contact-letter max-w-3xl mx-auto relative rounded-[24px] border border-accent/20 bg-[#fffdfb] p-6 sm:p-12">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className="text-sm uppercase tracking-[0.18em] text-accent">Say hello</p>
+          <h2 className="editorial-title mt-3 text-4xl sm:text-6xl text-ink">Drop me a note.</h2>
+        </div>
+        <span className="letter-stamp" aria-hidden="true">♡<small>SX</small></span>
+      </div>
+      <p className="mt-5 max-w-lg text-secondary leading-7">An idea, an opportunity, or just a hello—I’d love to hear from you.</p>
+      <form onSubmit={handleSubmit} className="mt-8" aria-busy={status === 'sending'}>
+        <fieldset disabled={status === 'sending'} className="space-y-6 disabled:opacity-70">
+          <legend className="sr-only">Send Sophia a message</legend>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <label className="block text-sm font-medium text-ink">Your name
+              <input required autoComplete="name" name="name" maxLength={120} value={form.name} onChange={handleChange} placeholder="Signed by…" className="letter-input" />
+            </label>
+            <label className="block text-sm font-medium text-ink">Your email
+              <input required type="email" autoComplete="email" name="email" maxLength={254} value={form.email} onChange={handleChange} placeholder="So I can write back" className="letter-input" />
+            </label>
+          </div>
+          <label className="block text-sm font-medium text-ink">Your note
+            <textarea required name="message" rows={5} maxLength={5000} value={form.message} onChange={handleChange} placeholder="Hi Sophia,…" className="letter-input letter-lines resize-y" />
           </label>
-
-          <label className="flex flex-col">
-            <span className="tex-white font-medium mb-4">
-              Your Email
-            </span>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="What is your email?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none"
-            />
-          </label>
-
-          <label className="flex flex-col">
-            <span className="tex-white font-medium mb-4">
-              Your Message
-            </span>
-            <textarea
-              rows="7"
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              placeholder="What do you want to say?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none"
-            />
-          </label>
-          
-          <button
-            type="submit" 
-            className="bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
-          >
-            {loading ? 'Sending...' : 'Send'}
-          </button>
-
-          {errorMessage && (
-            <p className="text-sm text-red-400">
-              {errorMessage}
-              <a href="mailto:sx25@rice.edu" className="text-white underline ml-1">
-                sx25@rice.edu
-              </a>
-            </p>
-          )}
-
-        </form>
-      </motion.div>
-
-      <motion.div
-        variants={slideIn('right', "tween", 0.2, 1)}
-        className="xl:h-[750px] md:h-[550px] h-[350px]"
-      >
-        <EarthCanvas />
-      </motion.div>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <span className="editorial-title italic text-xl text-secondary">Thanks for stopping by ♡</span>
+            <button type="submit" disabled={status === 'sending'} className="scrap-button bg-accent text-white hover:bg-[#853451] disabled:cursor-wait">{status === 'sending' ? 'Sending your note…' : 'Send my note ↗'}</button>
+          </div>
+        </fieldset>
+        <div role="status" aria-live="polite" className="mt-5 text-sm leading-6 text-accent">
+          {status === 'success' && 'Your note was sent. Thank you for reaching out!'}
+          {status === 'invalid' && 'Please add your name and a message before sending.'}
+          {status === 'error' && <>Your note couldn’t be sent. Your draft is still here—please try again or email me below.</>}
+        </div>
+      </form>
+      <p className="mt-4 border-t border-accent/15 pt-5 text-sm text-secondary">Prefer your own stationery? <a className="text-accent underline underline-offset-4" href="mailto:sx25@rice.edu">sx25@rice.edu</a></p>
     </div>
-  )
-}
+  );
+};
 
-export default SectionWrapper(Contact, "contact")
+export default SectionWrapper(Contact, 'contact');

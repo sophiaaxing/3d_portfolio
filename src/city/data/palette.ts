@@ -1,0 +1,23 @@
+// Colours for the 3D world. The DOM palette lives in styles/city.css.
+export const palette = {
+  background: '#e8e1d6',
+  board: '#d6d0c5',
+  boardBase: '#2e2c29',
+  path: '#e9e5dc',
+  paving: '#efebe4',
+  pad: '#c8c0b0',
+  white: '#fbf9f5',
+  stone: '#c8c4bc',
+  stoneDark: '#9b958c',
+  charcoal: '#35322e',
+  metal: '#a8a298',
+  bronze: '#9a7b58',
+  glass: '#aec5c9',
+  brick: '#c9a489',
+  roof: '#a88770',
+  wood: '#b0906f',
+  foliage: '#a3ab86',
+  trunk: '#8d7a68',
+  warmLight: '#ffd49a',
+  accent: '#c65f3e',
+} as const;

@@ -10,7 +10,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 .hash-span {
@@ -202,3 +202,52 @@
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
 }
+
+/* Soft paper, berry ink, and personal keepsakes. */
+body { background: #fff8f5; color: #49313e; }
+.editorial-title { font-family: Georgia, 'Times New Roman', serif; letter-spacing: -0.045em; }
+.hero-atmosphere {
+  background-color: #fff8f5;
+  background-image: radial-gradient(#d8a4b044 0.8px, transparent 0.8px);
+  background-size: 22px 22px;
+  border-bottom: 1px solid #edd3dc;
+}
+.scrap-button { display: inline-flex; align-items: center; gap: 12px; padding: 14px 24px; border-radius: 999px; font-weight: 600; transition: transform 200ms, background 200ms; }
+.scrap-button:hover { transform: translateY(-2px); }
+a:focus-visible, button:focus-visible { outline: 2px solid #a34464; outline-offset: 5px; }
+.portrait-paper { padding: 12px 12px 8px; background: #fffdfb; border: 1px solid #ecd8db; box-shadow: 5px 12px 28px #66354d16; transform: rotate(3deg); }
+.personal-note { transition: transform 240ms ease, box-shadow 240ms ease; box-shadow: 3px 5px 0 #edd3dc55; }
+.personal-note:nth-child(2) { background: #fcebee; }
+.personal-note:nth-child(3) { background: #f5eef7; }
+.experience-timeline .vertical-timeline-element-date { color: #735d68; opacity: 1; }
+.scroll-nudge { animation: scroll-nudge 2s ease-in-out infinite; }
+@keyframes scroll-nudge { 50% { transform: translateY(5px); } }
+@keyframes paper-sway { 50% { transform: rotate(1deg) translateY(-5px); } }
+@media (prefers-reduced-motion: no-preference) {
+  .portrait-paper { animation: paper-sway 7s ease-in-out infinite; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .personal-note:hover { transform: translateY(-6px) rotate(-1deg); box-shadow: 4px 10px 0 #edd3dc55; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-nudge { animation: none; }
+  .personal-note, .scrap-button { transition: none; }
+  .scrap-button:hover { transform: none; }
+  * { scroll-behavior: auto; }
+}
+
+/* Frame the supplied mark without its large surrounding margins. */
+.sx-monogram { position: relative; display: block; width: 60px; height: 40px; overflow: hidden; mix-blend-mode: multiply; }
+.sx-monogram img { position: absolute; width: 155px; max-width: none; height: 155px; left: 50%; top: 50%; transform: translate(-50%, -50%); filter: invert(1); }
+
+.contact-letter { box-shadow: 8px 8px 0 #f1dce3, 0 20px 50px #66354d0a; }
+.letter-stamp { display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; width: 64px; height: 76px; border: 2px dashed #ca8da1; outline: 4px solid #fcebee; background: #fcebee; color: #a34464; font-size: 30px; transform: rotate(8deg); }
+.letter-stamp small { font-size: 11px; letter-spacing: 2px; }
+.letter-input { display: block; width: 100%; margin-top: 10px; padding: 14px 16px; border: 1px solid #e5c9d2; border-radius: 10px; background: #fffaf8; color: #49313e; font-size: 16px; font-weight: 400; outline: none; }
+.letter-input::placeholder { color: #806674; }
+.letter-input:focus { border-color: #a34464; box-shadow: 0 0 0 3px #a3446420; }
+.letter-lines { line-height: 32px; background-image: repeating-linear-gradient(transparent, transparent 31px, #edd3dc66 31px, #edd3dc66 32px); background-position: 0 14px; }
+
+.charm-control { border: 1px solid #e5c9d2; border-radius: 999px; background: #fffdfb; color: #a34464; padding: 8px 16px; font-size: 14px; }
+.charm-control:hover, .charm-control[aria-pressed="true"] { background: #f5dce4; }
+[aria-label^="3D pink star"]:focus-visible { outline: 2px solid #a34464; }

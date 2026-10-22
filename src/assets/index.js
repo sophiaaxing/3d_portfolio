@@ -25,10 +25,6 @@ import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
 import episodesix from "./company/e6.webp";
 import aws from "./company/aws.png";
 import ruif from "./company/ruif.jpeg";
@@ -36,10 +32,8 @@ import d2k from "./company/d2k.jpeg";
 import csa from "./company/csa.jpeg";
 import csters from "./company/csterslogo.png";
 import csclub from "./company/csclub.png";
-
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
+import google from "./company/google.png";
+import nvidia from "./company/nvidia.png";
 
 export {
   logo,
@@ -67,18 +61,13 @@ export {
   tailwind,
   typescript,
   threejs,
-  meta,
-  shopify,
-  starbucks,
-  tesla,
   episodesix,
   aws,
+  google,
+  nvidia,
   ruif,
   d2k,
   csa,
   csters,
   csclub,
-  carrent,
-  jobit,
-  tripguide,
 };

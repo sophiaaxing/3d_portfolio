@@ -17,20 +17,15 @@ import {
     git,
     figma,
     docker,
-    meta,
-    starbucks,
-    tesla,
-    shopify,
     episodesix,
     aws,
+    nvidia,
+    google,
     ruif,
     d2k,
     csa,
     csters,
     csclub,
-    carrent,
-    jobit,
-    tripguide,
     threejs,
   } from "../assets";
   
@@ -133,177 +128,114 @@ import {
   
   const experiences = [
     {
+      title: "Software Engineer Intern",
+      company_name: "Google",
+      headline: "Where finance meets the frontier.",
+      summary: "Diving deep into the intersection of finance and software engineering through AI, the frontier of both.",
+      icon: google,
+      iconBg: "#ffffff",
+      date: "August 2026 - Present",
+      points: [
+        "Building AI-powered tools that help teams retrieve and analyze internal financial data.",
+        "Learning what it takes to bring AI into finance, where accuracy and trust matter as much as speed."
+      ],
+    },
+    {
+      title: "Cloud Distributed Systems Engineer Intern",
+      company_name: "NVIDIA",
+      headline: "Real ownership, real impact.",
+      summary: "Owned three projects that helped grow revenue and laid the foundation for new ways to use GeForce NOW.",
+      icon: nvidia,
+      iconBg: "#383E56",
+      date: "May 2026 - August 2026",
+      points: [
+        "Owned three projects end to end across backend storage, scheduling, and platform integrations for GPU-powered cloud workloads.",
+        "Shipped work that helped increase revenue for NVIDIA’s cloud gaming ecosystem.",
+        "Set up the foundation for GeForce NOW to be used in ways beyond what it supports today.",
+      ],
+    },
+    {
       title: "Software Development Engineer Intern",
       company_name: "Amazon Web Services",
+      headline: "Starting from what customers asked for.",
+      summary: "Turned customer pain points into frontend and backend features that made the Elastic Load Balancer Console easier to use.",
       icon: aws,
       iconBg: "#ffffff",
       date: "May 2025 - August 2025",
       points: [
-        "Designed a Kubernetes and CloudFormation aware console to improve Elastic Load Balancer usability for AWS customers.",
-        "Built tag-based detection and mapping to surface Kubernetes relationships across ELB resources.",
-        "Introduced proactive drift detection to prevent misconfigurations and boost system reliability."
+        "Dug into the pain points customers raised and looked for where managing load balancers felt harder than it should.",
+        "Built Infrastructure-as-Code features across the frontend and backend of the console, giving users better visibility into their resources.",
+        "Developed integrations across AWS services so moving between them felt smoother.",
       ],
     },
     {
       title: "Software Engineer Intern",
       company_name: "Episode Six",
+      headline: "My first internship, and my first taste of fintech.",
+      summary: "Learned frontend and backend development for payments, with a focus on the authentication and security that finance engineering depends on.",
       icon: episodesix,
       iconBg: "#383E56",
       date: "June 2024 - August 2024",
       points: [
-        "Built backend APIs that streamlined authentication and transaction workflows for enterprise fintech clients.",
-        "Improved transaction validation and error handling to boost accuracy and security.",
-        "UEnhanced reliability with structured logging and expanded test coverage, cutting debugging time significantly."
-      ],
-    },
-    {
-      title: "Senior Analyst",
-      company_name: "Rice Undergraduate Investment Fund",
-      icon: ruif,
-      iconBg: "#ffffff",
-      date: "May 2024 - Present",
-      points: [
-        "Delivered 5% return on a $40,000 energy portfolio by identifying undervalued equities and leading investment decisions.",
-        "Developed and defended trade theses by integrating macro factors and performing risk-reward scenario analysis.",
-      ],
-    },
-    {
-      title: "Datathon Director",
-      company_name: "Rice Data To Knowledge Lab",
-      icon: d2k,
-      iconBg: "#ffffff",
-      date: "March 2024 - March 2025",
-      points: [
-        "Directing the 7th Annual Rice University Datathon, a city-wide data science competition welcoming 500+ students in previous years.",
-        "Designing competition tracks, hosting workshops, coordinating schedules, budgeting, and securing sponsorships up to $30,000 in previous years.",
-      ],
-    },
-    {
-      title: "External Vice President",
-      company_name: "Rice Chinese Student Association",
-      icon: csa,
-      iconBg: "#a60004",
-      date: "March 2024 - Present",
-      points: [
-        "Lead the coordination of off-campus events, including restaurant outings, collaborations with external organizations, and community service initiatives.",
-        "Manage alumni relations and head the logistics for the Lunar New Year celebration, securing staging and sponsors to ensure successful and enriching cultural events.",
-      ],
-    },
-    {
-      title: "External Vice President",
-      company_name: "Rice Computer Science Club",
-      icon: csclub,
-      iconBg: "#ffffff",
-      date: "September 2023 - Present",
-      points: [
-        "Facilitating a direct, accessible, and constructive conduit for Rice students to voice their opinions and ideas about Rice Computer Science while connecting the Computer Science Department to new students.",
-        "Coordinating events with 50+ students that provide a forum for freshmen to inquire about the courses with Professors and Teacher’s Assistants in both formal and informal settings.",
-      ],
-    },
-    {
-      title: "Social Coordinator",
-      company_name: "Rice Women in Computing (CSters)",
-      icon: csters,
-      iconBg: "#ffffff",
-      date: "August 2023 - Present",
-      points: [
-        "Organizing professional and social events to empower women interested in Computer Science to join a tight-knit “sisterhood” of 150+ current students, alumni, professors, and mentors.",
-        "Creating opportunities to connect with companies, information sessions on how to better prepare for job interviews, or informal meetings between upperclassmen and underclassmen to share experiences and ask questions.",
-      ],
-    },
-  ];
-  
-  const testimonials = [
-    {
-      testimonial:
-        "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-      name: "Daniel Ling",
-      designation: "Founder",
-      company: "XV Resupply, LLC.",
-      image: "https://randomuser.me/api/portraits/women/4.jpg",
-    },
-    {
-      testimonial:
-        "I've never met a web developer who truly cares about their clients' success like Rick does.",
-      name: "Chris Brown",
-      designation: "COO",
-      company: "DEF Corp",
-      image: "https://randomuser.me/api/portraits/men/5.jpg",
-    },
-    {
-      testimonial:
-        "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-      name: "Lisa Wang",
-      designation: "CTO",
-      company: "456 Enterprises",
-      image: "https://randomuser.me/api/portraits/women/6.jpg",
+        "Worked across the frontend and backend of payment workflows, including Java APIs for transaction processing.",
+        "Added authentication and built validation and security features, which matter a lot when the data is people’s money.",
+        "Found out how much I enjoy the intersection of finance and tech."
+      ]
+    // {
+    //   title: "Senior Analyst",
+    //   company_name: "Rice Undergraduate Investment Fund",
+    //   icon: ruif,
+    //   iconBg: "#ffffff",
+    //   date: "May 2024 - Present",
+    //   points: [
+    //     "Delivered 5% return on a $40,000 energy portfolio by identifying undervalued equities and leading investment decisions.",
+    //     "Developed and defended trade theses by integrating macro factors and performing risk-reward scenario analysis.",
+    //   ],
+    // },
+    // {
+    //   title: "Datathon Director",
+    //   company_name: "Rice Data To Knowledge Lab",
+    //   icon: d2k,
+    //   iconBg: "#ffffff",
+    //   date: "March 2024 - March 2025",
+    //   points: [
+    //     "Directing the 7th Annual Rice University Datathon, a city-wide data science competition welcoming 500+ students in previous years.",
+    //     "Designing competition tracks, hosting workshops, coordinating schedules, budgeting, and securing sponsorships up to $30,000 in previous years.",
+    //   ],
+    // },
+    // {
+    //   title: "External Vice President",
+    //   company_name: "Rice Chinese Student Association",
+    //   icon: csa,
+    //   iconBg: "#a60004",
+    //   date: "March 2024 - Present",
+    //   points: [
+    //     "Lead the coordination of off-campus events, including restaurant outings, collaborations with external organizations, and community service initiatives.",
+    //     "Manage alumni relations and head the logistics for the Lunar New Year celebration, securing staging and sponsors to ensure successful and enriching cultural events.",
+    //   ],
+    // },
+    // {
+    //   title: "External Vice President",
+    //   company_name: "Rice Computer Science Club",
+    //   icon: csclub,
+    //   iconBg: "#ffffff",
+    //   date: "September 2023 - Present",
+    //   points: [
+    //     "Facilitating a direct, accessible, and constructive conduit for Rice students to voice their opinions and ideas about Rice Computer Science while connecting the Computer Science Department to new students.",
+    //     "Coordinating events with 50+ students that provide a forum for freshmen to inquire about the courses with Professors and Teacher’s Assistants in both formal and informal settings.",
+    //   ],
+    // },
+    // {
+    //   title: "Social Coordinator",
+    //   company_name: "Rice Women in Computing (CSters)",
+    //   icon: csters,
+    //   iconBg: "#ffffff",
+    //   date: "August 2023 - Present",
+    //   points: [
+    //     "Organizing professional and social events to empower women interested in Computer Science to join a tight-knit “sisterhood” of 150+ current students, alumni, professors, and mentors.",
+    //     "Creating opportunities to connect with companies, information sessions on how to better prepare for job interviews, or informal meetings between upperclassmen and underclassmen to share experiences and ask questions.",
+    //   ],
     },
   ];
   
-  const projects = [
-    {
-      name: "Car Rent",
-      description:
-        "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
-      tags: [
-        {
-          name: "react",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "mongodb",
-          color: "green-text-gradient",
-        },
-        {
-          name: "tailwind",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: carrent,
-      source_code_link: "https://github.com/",
-    },
-    {
-      name: "Job IT",
-      description:
-        "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
-      tags: [
-        {
-          name: "react",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "restapi",
-          color: "green-text-gradient",
-        },
-        {
-          name: "scss",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: jobit,
-      source_code_link: "https://github.com/",
-    },
-    {
-      name: "Trip Guide",
-      description:
-        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-      tags: [
-        {
-          name: "nextjs",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "supabase",
-          color: "green-text-gradient",
-        },
-        {
-          name: "css",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: tripguide,
-      source_code_link: "https://github.com/",
-    },
-  ];
-  
-  export { services, technologies, experiences, testimonials, projects };
+  export { services, technologies, experiences };
