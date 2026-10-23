@@ -9,7 +9,7 @@ import { PageHeading } from './PageHeading';
 export function CasePage({ id }: { id: string }) {
   const study = caseStudyById[id];
   const next = nextCaseStudy(id);
-  const place = districtById[study.place];
+  const place = study.place ? districtById[study.place] : null;
   const meta = [
     { label: 'Role', value: study.role },
     study.context && { label: 'Context', value: study.context },
@@ -52,8 +52,8 @@ export function CasePage({ id }: { id: string }) {
       ))}
 
       <nav className="page__footer" aria-label="Case studies">
-        <Link to={pathForSelection({ selected: study.place, item: study.item ?? null })}>
-          <span aria-hidden="true">←</span> back to {place.name} in the city
+        <Link to={study.place ? pathForSelection({ selected: study.place, item: study.item ?? null }) : '/city/work'}>
+          <span aria-hidden="true">←</span> {place ? `back to ${place.name} in the city` : 'back to work'}
         </Link>
         <Link to={pathForCaseStudy(next)} className="page__next">
           <span className="page__next-label">Next</span>

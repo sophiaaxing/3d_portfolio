@@ -36,7 +36,7 @@ export function parseCityPath(pathname: string): CityRoute {
   if (first === 'work' || first === 'projects') {
     const study: CaseStudy | undefined = second ? caseStudyById[second] : undefined;
     if (study && study.section === first) {
-      return { selection: { selected: study.place, item: study.item ?? null }, page: { kind: 'case', id: study.id } };
+      return { selection: { selected: study.place ?? null, item: study.item ?? null }, page: { kind: 'case', id: study.id } };
     }
     return { selection: null, page: { kind: first } };
   }

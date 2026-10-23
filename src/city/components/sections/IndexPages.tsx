@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { about } from '../../data/about';
 import { caseStudies, caseStudyFor } from '../../data/caseStudies';
 import { currently } from '../../data/currently';
-import { earlierWork } from '../../data/earlierWork';
 import { projects } from '../../data/projects';
 import { site } from '../../data/site';
 import { pathForCaseStudy, pathForSelection } from '../../routing';
@@ -15,7 +14,7 @@ export function WorkIndex() {
     <article className="page">
       <p className="page__eyebrow">
         <span>Work</span>
-        <span>{String(work.length + earlierWork.length).padStart(2, '0')} places</span>
+        <span>{String(work.length).padStart(2, '0')} places</span>
       </p>
       <PageHeading className="page__title">Where I’ve worked</PageHeading>
       <ol className="page__index">
@@ -32,18 +31,6 @@ export function WorkIndex() {
           </li>
         ))}
       </ol>
-      {earlierWork.map((job) => (
-        <section key={job.id} className="page__section">
-          <h2 className="page__section-title">{job.company}</h2>
-          <div className="page__section-body">
-            <p><strong>{job.role}</strong> · {job.year}</p>
-            <p>{job.context}</p>
-            <ul className="page__list">
-              {job.points.map((point) => <li key={point}>{point}</li>)}
-            </ul>
-          </div>
-        </section>
-      ))}
     </article>
   );
 }

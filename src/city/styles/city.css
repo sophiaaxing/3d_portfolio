@@ -465,17 +465,20 @@
 
 .district-panel {
   --panel-width: min(380px, 32vw);
+  --panel-fade: 96px;
+  --panel-inset: 32px;
   position: absolute;
   z-index: 2;
   top: 0;
   right: 0;
   bottom: 0;
-  width: calc(var(--panel-width) + var(--gutter) + 96px);
+  width: calc(var(--panel-width) + var(--gutter) + var(--panel-fade) + var(--panel-inset));
   display: flex;
   flex-direction: column;
-  padding: 96px var(--gutter) var(--gutter) 96px;
+  padding: 96px var(--gutter) var(--gutter) calc(var(--panel-fade) + var(--panel-inset));
   overflow-y: auto;
-  background: linear-gradient(to right, rgba(var(--c-paper-rgb), 0), rgba(var(--c-paper-rgb), 0.97) 96px);
+  /* Leave a solid paper margin between the fade and the text. */
+  background: linear-gradient(to right, rgba(var(--c-paper-rgb), 0), rgba(var(--c-paper-rgb), 0.97) var(--panel-fade));
   transition: opacity 0.5s var(--ease-out) 0.45s, transform 0.5s var(--ease-out) 0.45s;
 }
 
@@ -1258,7 +1261,7 @@
     max-height: 48vh;
     overflow-y: auto;
     justify-content: flex-start;
-    padding: 20px var(--gutter) calc(var(--gutter) + env(safe-area-inset-bottom));
+    padding: 32px var(--gutter) calc(var(--gutter) + env(safe-area-inset-bottom));
     background: var(--c-bg-light);
     border-top: 1px solid var(--c-rule);
   }

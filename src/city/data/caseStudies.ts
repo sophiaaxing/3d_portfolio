@@ -1,4 +1,5 @@
 import type { DistrictId } from './districts';
+import { earlierWork } from './earlierWork';
 
 export interface FlowStep {
   label: string;
@@ -17,8 +18,8 @@ export interface CaseStudy {
   id: string;
   /** Which index the study belongs to; also the first part of its URL. */
   section: 'work' | 'projects';
-  /** The place in the city it opens from, and the object there if it has one. */
-  place: DistrictId;
+  /** Optional city location; some work experiences have no building. */
+  place?: DistrictId;
   item?: string;
   eyebrow: string;
   title: string;
@@ -114,6 +115,17 @@ export const caseStudies: CaseStudy[] = [
       }
     ]
   },
+  ...earlierWork.map((job, index): CaseStudy => ({
+    id: job.id,
+    section: 'work',
+    eyebrow: `${String(index + 4).padStart(2, '0')} / ${job.company}`,
+    title: job.title,
+    role: job.role,
+    year: job.year,
+    context: job.context,
+    stack: job.stack,
+    sections: [{ heading: 'What I worked on', list: job.points }],
+  })),
   {
     "id": "orchestrator",
     "section": "projects",

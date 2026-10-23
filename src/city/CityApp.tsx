@@ -30,7 +30,7 @@ const isTyping = (target: EventTarget | null) =>
 function closePathFor(page: Page) {
   if (page.kind === 'case') {
     const study = caseStudyById[page.id];
-    return pathForSelection({ selected: study.place, item: study.item ?? null });
+    return study.place ? pathForSelection({ selected: study.place, item: study.item ?? null }) : '/city/work';
   }
   return pathForSelection(cityStore.get());
 }
